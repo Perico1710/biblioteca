@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/layout :: head}">
+</head>
+
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+
+	<div class="container">
+		<h1 class="text-primary" th:text="${title}"></h1>
+
+		<a class="btn btn-primary btn-xs" th:href="@{/libro/form}" role="button">Crear Libro</a>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>Id libro</th>
+					<th>Titulo</th>
+					<th>Autor</th>
+					<th>Fecha Lanzamiento</th>
+					<th>Cantidad Stock</th>
+					<th>Fecha Creación</th>
+					<th>Acción</th>
+					<th>Acción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="libro: ${libro}">
+					<td>
+						<a th:text="${libro.id}" th:href="@{/libro} + '?id=' + ${libro.id}"></a>
+					</td>
+					<!--<td th:text="${libro.id}"></td>-->
+					<td th:text="${libro.idLibro}"></td>
+					<td th:text="${libro.titulo}"></td>
+					<td>
+						<a th:text="${libro.autor}" th:href="@{/libro/listar} + '?autor=' + ${libro.autor}"></a>
+					</td>
+					<!--<td th:text="${libro.autor}"></td>-->
+					<td th:text="${libro.lanzamiento}"></td>
+					<td th:text="${libro.cantidad}"></td>
+					<td th:text="${libro.createAt}"></td>
+					<td>
+						<a class="btn btn-success btn-xs" th:href="@{/libro/form/} + ${libro.id}">
+							Editar
+						</a>
+					</td>
+					<td>
+						<a class="btn btn-danger btn-xs" th:href="@{/libro/eliminar/} + ${libro.id}">
+							Eliminar
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/layout :: head}">
+</head>
+
+<body>
+	
+	<div class="container">
+		
+		<h1 th:text="${titulo}" class="text-primary"></h1>
+		<form th:action="@{/libro/form}" th:object="${libro}" method="post">
+			<table>
+				<tr>
+					<td>Id Libro</td>
+					<td><input type="text" th:field="*{idLibro}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('idLibro')}"><small th:errors="*{idLibro}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+					<td>Titulo Libro</td>
+					<td><input type="text" th:field="*{titulo}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('titulo')}"><small th:errors="*{titulo}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+					<td>Autor</td>
+					<td><input type="text" th:field="*{autor}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('autor')}"><small th:errors="*{autor}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+					<td>Año Lanzamiento</td>
+					<td><input type="number" th:field="*{lanzamiento}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('lanzamiento')}"><small th:errors="*{lanzamiento}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+					<td>Cantidad Stock</td>
+					<td><input type="number" th:field="*{cantidad}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('cantidad')}"><small th:errors="*{cantidad}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+
+					<td><input type="submit" value="Guardar" class="btn btn-primary" /></td>
+				</tr>
+				
+				<tr>
+
+					<td><a class="btn btn-danger" th:href="@{listar}" role="button">Cancelar</a></td>
+				</tr>
+
+
+			</table>
+
+			<input type="hidden" th:field="*{id}" />
+		</form>
+	</div>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+
+</html>

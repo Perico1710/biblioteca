@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}"></title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+	<div class="container">
+
+		<h1 th:text="${titulo}" class="text-primary"></h1>
+		<form th:action="@{/usuario/form}" th:object="${usuario}" method="post">
+			<table>
+				<tr>
+					<td>Id Usuario</td>
+					<td><input type="text" th:field="*{idUsuario}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('idUsuario')}"><small th:errors="*{idUsuario}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+					<td>Nombre</td>
+					<td><input type="text" th:field="*{nombre}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('nombre')}"><small th:errors="*{nombre}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+					<td>Apellido</td>
+					<td><input type="text" th:field="*{apellido}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('apellido')}"><small th:errors="*{apellido}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+					<td>Fecha de Alta</td>
+					<td><input type="text" th:field="*{fechaRegistro}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('fechaRegistro')}"><small th:errors="*{fechaRegistro}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+					<td>Prestamo</td>
+					<td><input type="text" th:field="*{prestamo}" class="form-control" /></td>
+					<td th:if="${#fields.hasErrors ('prestamo')}"><small th:errors="*{prestamo}"
+							class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+
+					<td><input type="submit" value="Guardar" class="btn btn-primary" /></td>
+				</tr>
+
+				<tr>
+
+					<td><a class="btn btn-danger" th:href="@{listar}" role="button">Cancelar</a></td>
+				</tr>
+
+			</table>
+
+			<input type="hidden" th:field="*{id}" />
+		</form>
+	</div>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
